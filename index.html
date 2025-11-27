@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RayDAR Weapon: Stones from Another Dimension</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>RayDAR Test Pool: Hands-On Anomaly</h1>
+    <nav>
+      <ul>
+        <li><a href="#dar-splashroom">The DAR Splashroom</a></li>
+        <li><a href="#evidence-archive">Evidence Archive</a></li>
+        <li><a href="#organic-specimens">Organic Specimens</a></li>
+        <li><a href="#gameshow">The RayDAR Gameshow</a></li>
+        <li><a href="#manifesto">The Coil Manifesto</a></li>
+        <li><a href="#community">Community Gallery</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- The DAR Splashroom -->
+  <section id="dar-splashroom">
+    <h2>The DAR Splashroom</h2>
+    <div class="interactive-pool">
+      <p>Click on a DAR stone to test its reaction!</p>
+      <div class="stone" id="stone1">Stone 1</div>
+      <div class="stone" id="stone2">Stone 2</div>
+    </div>
+  </section>
+
+  <!-- Evidence Archive -->
+  <section id="evidence-archive">
+    <h2>Evidence Archive</h2>
+    <div class="category" id="precision-cut">
+      <h3>Precision-Cut Specimens</h3>
+      <p>Description of precision-cut stones...</p>
+      <button class="view-more">View More</button>
+    </div>
+    <div class="category" id="saffordites">
+      <h3>Saffordites and Tektites</h3>
+      <p>Description of saffordites...</p>
+      <button class="view-more">View More</button>
+    </div>
+  </section>
+
+  <!-- Organic Specimens -->
+  <section id="organic-specimens">
+    <h2>Organic Specimens</h2>
+    <p>Explore the organic specimen gallery...</p>
+    <!-- Interactive 3D model placeholder -->
+    <div id="specimen-gallery"></div>
+  </section>
+
+  <!-- The RayDAR Gameshow -->
+  <section id="gameshow">
+    <h2>The RayDAR Gameshow</h2>
+    <div id="test-area">
+      <button id="startTest" onclick="startTest()">Start the Test</button>
+      <p id="testResult"></p>
+    </div>
+  </section>
+
+  <!-- The Coil Manifesto -->
+  <section id="manifesto">
+    <h2>The Coil Manifesto</h2>
+    <div id="manifesto-text">
+      <p>Interactive, immersive manifesto...</p>
+    </div>
+  </section>
+
+  <!-- Community Gallery -->
+  <section id="community">
+    <h2>Community Feedback & Media</h2>
+    <div class="gallery">
+      <button onclick="viewGallery()">View Community Submissions</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>Contact Us | Privacy Policy</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
