@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Specimen Distribution Graph</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    body { margin: 0; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <script>
+    // Set up the scene, camera, and renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Create the 3D bars (representing the categories)
+    const data = {
+      "Precision-Cut": 150,
+      "Saffordites": 80,
+      "Fossils/Geodes": 120,
+      "Site Documentation": 90
+    };
+
+    const categories = Object.keys(data);
+    const colors = [0x44aa88, 0x8844aa, 0x88aa44, 0xaaaa44];
+
+    categories.forEach((category, index) => {
+      const barHeight = data[category] / 10; // Scale down for visualization
+
+      const geometry = new THREE.BoxGeometry(1, barHeight, 1);
+      const material = new THREE.MeshBasicMaterial({ color: colors[index] });
+      const bar = new THREE.Mesh(geometry, material);
+
+      // Position each bar along the x-axis with spacing between
+      bar.position.x = index * 2 - (categories.length - 1);
+      bar.position.y = barHeight / 2;
+      bar.position.z = 0;
+
+      // Add a label to each bar
+      const label = document.createElement("div");
+      label.style.position = "absolute";
+      label.style.color = "#fff";
+      label.style.top = `${(bar.position.y * window.innerHeight / 100) - 20}px`;
+      label.style.left = `${(bar.position.x * window.innerWidth / 10)}px`;
+      label.innerHTML = `${category}: ${data[category]}`;
+      document.body.appendChild(label);
+
+      scene.add(bar);
+    });
+
+    // Set up camera position
+    camera.position.z = 10;
+
+    // Add basic lighting to the scene
+    const light = new THREE.AmbientLight(0x404040, 1);
+    scene.add(light);
+
+    // Add an animation loop to rotate the scene
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // Rotate the entire scene for better viewing
+      scene.rotation.x += 0.01;
+      scene.rotation.y += 0.01;
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Handle resizing of the window
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+  </script>
+</body>
+</html>
